@@ -1,0 +1,12 @@
+.card {
+    height: 330px;
+}
+
+img {
+    width: 300px;
+    height: 200px;
+    object-fit: contain;
+}
+.card div {
+    width: 300px;
+}
