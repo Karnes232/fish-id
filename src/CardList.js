@@ -7,7 +7,6 @@ const CardList = ({ fishList }) =>{
         <div>
             {
                 fishList.map((user, i) => {
-                console.log(user)
                 return (
                     <Card 
                         key={i} 

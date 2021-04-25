@@ -9,14 +9,17 @@ function App() {
   const [searchField, setSearchField] = useState('')
 
   useEffect(() => {
-    fetch('https://www.fishwatch.gov/api/species')
-        .then(response => response.json())
-        .then(users => setFishList(users))
-  }, [])
+    async function fetchMyAPI() {
+      let response = await fetch("https://cors-anywhere.herokuapp.com/https://www.fishwatch.gov/api/species")
+      response = await response.json()
+      setFishList(response)
+    }
 
+    fetchMyAPI()
+  }, [])
+   
   const onSearchChange = (event) => {
     setSearchField(event.target.value)
-    console.log(fishList)
   } 
 
   const filteredFishes = fishList.filter(fish => {
