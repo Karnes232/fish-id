@@ -3,19 +3,17 @@ import './App.css';
 import CardList from './CardList'
 import SearchBox from './SearchBox'
 import Scroll from './Scroll'
+import { fish } from './fishes'
 
 function App() {
   const [fishList, setFishList] = useState([])
   const [searchField, setSearchField] = useState('')
 
   useEffect(() => {
-    async function fetchMyAPI() {
-      let response = await fetch("https://cors-anywhere.herokuapp.com/https://www.fishwatch.gov/api/species")
-      response = await response.json()
-      setFishList(response)
-    }
-
-    fetchMyAPI()
+    fetch('https://www.fishwatch.gov/api/species')
+    .then(response => response.json())
+    .then(fishes =>  setFishList(fishes))
+    .catch(error => setFishList(fish))
   }, [])
    
   const onSearchChange = (event) => {
